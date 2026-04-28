@@ -62,7 +62,7 @@ export default function Navbar() {
       {open && (
         <div style={{
           position: 'absolute', top: '100%', left: 0, right: 0,
-          background: 'rgba(5,6,15,0.97)', backdropFilter: 'blur(20px)',
+          background: 'rgba(5,6,15,0.97)', backdropFilter: 'blur(10px)',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
           padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 20,
         }}>

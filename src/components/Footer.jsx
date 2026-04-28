@@ -58,13 +58,18 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(241,245,249,0.3)', marginBottom: 16 }}>Contact</p>
-            <a href="mailto:hello@beaverhq.com" style={{
-              display: 'block', color: 'rgba(241,245,249,0.5)', textDecoration: 'none',
-              fontSize: 14, marginBottom: 10, transition: 'color 0.2s',
-            }}
-              onMouseEnter={e => e.target.style.color = '#c4b5fd'}
-              onMouseLeave={e => e.target.style.color = 'rgba(241,245,249,0.5)'}
-            >hello@beaverhq.com</a>
+            {[
+              { label: 'info@stepsbuild.com', href: 'mailto:info@stepsbuild.com' },
+              { label: 'info@slim-file.com', href: 'mailto:info@slim-file.com' },
+            ].map(e => (
+              <a key={e.label} href={e.href} style={{
+                display: 'block', color: 'rgba(241,245,249,0.5)', textDecoration: 'none',
+                fontSize: 14, marginBottom: 10, transition: 'color 0.2s',
+              }}
+                onMouseEnter={el => el.target.style.color = '#c4b5fd'}
+                onMouseLeave={el => el.target.style.color = 'rgba(241,245,249,0.5)'}
+              >{e.label}</a>
+            ))}
           </div>
         </div>
 
