@@ -1,3 +1,5 @@
+import logo from '../assets/logo.svg';
+
 export default function Footer() {
   return (
     <footer style={{
@@ -11,13 +13,10 @@ export default function Footer() {
           {/* Brand */}
           <div style={{ gridColumn: 'span 1' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <div style={{
-                width: 32, height: 32, borderRadius: 8,
-                background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 16, color: 'white',
-              }}>B</div>
-              <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 18, color: '#f1f5f9' }}>Beaver</span>
+              <img src={logo} alt="Beaver" style={{ height: 52 }} />
+              <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16, color: '#f1f5f9', letterSpacing: '-0.3px' }}>
+                Beaver Technologies
+              </span>
             </div>
             <p style={{ fontSize: 13, color: 'rgba(241,245,249,0.4)', lineHeight: 1.7, maxWidth: 220 }}>
               We build what matters. Parent company of STEPsBuild and SlimFile.

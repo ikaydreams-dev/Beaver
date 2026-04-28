@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import logo from '../assets/logo.svg';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -14,15 +15,10 @@ export default function Navbar() {
   return (
     <nav>
       {/* Logo */}
-      <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{
-          width: 36, height: 36, borderRadius: 10,
-          background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 18, color: 'white',
-        }}>B</div>
-        <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 20, color: '#f1f5f9', letterSpacing: '-0.5px' }}>
-          Beaver
+      <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
+        <img src={logo} alt="Beaver" style={{ height: 56 }} />
+        <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 18, color: '#f1f5f9', letterSpacing: '-0.3px' }}>
+          Beaver Technologies
         </span>
       </a>
 
