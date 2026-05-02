@@ -31,7 +31,7 @@ const MEGA_MENU = [
       },
       { name: 'SlimVideo',           href: '#' },
       { name: 'SlimAudio',           href: '#' },
-      { name: 'SlimConvert + SlimFile', href: '#' },
+      { name: 'SlimConvert + SlimFile', href: 'https://www.slim-file.com/convert-compress' },
     ],
   },
   {
