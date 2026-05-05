@@ -11,8 +11,8 @@ const MEGA_MENU = [
         items: [
           { name: 'SlimVideo', href: '#' },
           { name: 'SlimAudio', href: '#' },
-          { name: 'SlimImage', href: '#' },
-          { name: 'SlimDocs',  href: '#' },
+          { name: 'SlimImage', href: 'https://www.slim-file.com/compress' },
+          { name: 'SlimDocs',  href: 'https://www.slim-file.com/compress' },
         ],
       },
       {
