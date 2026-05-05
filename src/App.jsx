@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Products from './components/Products';
 import Services from './components/Services';
 import WhyBeaver from './components/WhyBeaver';
 import Contact from './components/Contact';
@@ -13,7 +12,6 @@ export default function App() {
       <Navbar />
       <Hero />
       <About />
-      <Products />
       <Services />
       <WhyBeaver />
       <Contact />
