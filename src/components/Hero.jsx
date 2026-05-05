@@ -53,6 +53,10 @@ export default function Hero() {
 
   return (
     <section style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       position: 'relative', overflow: 'hidden',
       padding: '120px 24px 80px',
     }}>
