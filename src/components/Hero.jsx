@@ -279,15 +279,18 @@ export default function Hero() {
             <div style={{
               position: 'absolute',
               top: '50%', left: '50%',
-              width: 68, height: 68,
+              width: 96, height: 96,
               transform: 'translate(-50%, -50%)',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+              background: 'rgba(5,6,15,0.9)',
+              border: '1.5px solid rgba(139,92,246,0.4)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 26, color: 'white',
-              boxShadow: '0 0 40px rgba(139,92,246,0.6), 0 0 80px rgba(139,92,246,0.2)',
+              boxShadow: '0 0 40px rgba(139,92,246,0.5), 0 0 80px rgba(139,92,246,0.15)',
               zIndex: 3,
-            }}>B</div>
+              padding: 16,
+            }}>
+              <img src="/logo.png" alt="Beaver Technologies" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            </div>
 
           </div>
         </div>
