@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import logo from '../assets/logo.svg';
 
 const MEGA_MENU = [
   {
@@ -120,7 +119,7 @@ export default function Navbar() {
       <nav ref={navRef}>
         {/* Logo */}
         <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
-          <img src={logo} alt="Beaver" style={{ height: 56 }} />
+          <img src="/logo.png" alt="Beaver" style={{ height: 56 }} />
           <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 18, color: '#f1f5f9', letterSpacing: '-0.3px' }}>
             Beaver Technologies
           </span>

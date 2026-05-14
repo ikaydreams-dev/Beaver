@@ -1,5 +1,3 @@
-import logo from '../assets/logo.svg';
-
 export default function Footer() {
   return (
     <footer style={{
@@ -13,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div style={{ gridColumn: 'span 1' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <img src={logo} alt="Beaver" style={{ height: 52 }} />
+              <img src="/logo.png" alt="Beaver" style={{ height: 52 }} />
               <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16, color: '#f1f5f9', letterSpacing: '-0.3px' }}>
                 Beaver Technologies
               </span>
