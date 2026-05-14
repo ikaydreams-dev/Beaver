@@ -10,7 +10,7 @@ const MEGA_MENU = [
         title: 'File Compression',
         items: [
           { name: 'SlimVideo', href: '#' },
-          { name: 'SlimAudio', href: '#' },
+          { name: 'SlimAudio', href: 'https://audio.slim-file.com/' },
           { name: 'SlimImage', href: 'https://www.slim-file.com/compress' },
           { name: 'SlimDocs',  href: 'https://www.slim-file.com/compress' },
         ],
@@ -37,7 +37,7 @@ const MEGA_MENU = [
     title: 'Beaver Dam',
     items: [
       { name: 'B-Market', href: '#' },
-      { name: 'B-Mall',   href: '#' },
+      { name: 'B-Mall',   href: 'https://mall.beaver-llc.com/' },
       { name: 'B-Mart',   href: '#' },
     ],
   },

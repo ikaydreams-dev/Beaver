@@ -11,7 +11,7 @@ const RINGS = [
     radius: 105, duration: 22, reverse: false, size: 42,
     items: [
       { label: 'SlimVideo',  color: '#06b6d4', Icon: Video,    href: '#' },
-      { label: 'SlimAudio',  color: '#06b6d4', Icon: Music,    href: '#' },
+      { label: 'SlimAudio',  color: '#06b6d4', Icon: Music,    href: 'https://audio.slim-file.com/' },
       { label: 'SlimImage',  color: '#06b6d4', Icon: Image,    href: 'https://www.slim-file.com/compress' },
       { label: 'SlimDocs',   color: '#06b6d4', Icon: FileText, href: 'https://www.slim-file.com/compress' },
       { label: 'SlimConvert',color: '#22d3ee', Icon: RefreshCw,href: 'https://www.slim-file.com/convert-only' },
@@ -38,7 +38,7 @@ const RINGS = [
     items: [
       { label: 'B-OCR',    color: '#a78bfa', Icon: ScanText,  href: 'https://www.slim-file.com/ocr-tool' },
       { label: 'B-Market', color: '#f59e0b', Icon: Store,     href: '#' },
-      { label: 'B-Mall',   color: '#f59e0b', Icon: Building2, href: '#' },
+      { label: 'B-Mall',   color: '#f59e0b', Icon: Building2, href: 'https://mall.beaver-llc.com/' },
       { label: 'B-Mart',   color: '#f59e0b', Icon: Package,   href: '#' },
       { label: 'SF SDK',   color: '#10b981', Icon: Code2,     href: 'https://www.npmjs.com/package/@slimfile/sdk' },
       { label: 'SF CLI',   color: '#10b981', Icon: Terminal,  href: 'https://www.npmjs.com/package/@slimfile/cli' },
