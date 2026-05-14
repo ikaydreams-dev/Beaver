@@ -289,7 +289,7 @@ export default function Hero() {
               zIndex: 3,
               padding: 16,
             }}>
-              <img src="/logo-icon.png" alt="Beaver Technologies" style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }} />
+              <img src="/logo-transparent.png" alt="Beaver Technologies" style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }} />
             </div>
 
           </div>
