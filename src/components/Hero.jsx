@@ -1,40 +1,74 @@
 import { useEffect, useRef } from 'react';
 import {
-  FileArchive, BarChart3, MessageSquare,
-  LayoutGrid, ShoppingBag, Code2,
+  Video, Music, Image, FileText, RefreshCw, GitMerge, Scissors,
+  Trophy, Settings2, BookOpen, Mail, MessageSquare, PenLine,
+  AlignLeft, ScanText, Store, Building2, Package, Code2, Terminal, Globe,
 } from 'lucide-react';
 
-const INNER = [
-  { name: 'SlimFile',   color: '#06b6d4', icon: FileArchive, href: 'https://www.slim-file.com' },
-  { name: 'STEPsBuild', color: '#8b5cf6', icon: BarChart3,   href: 'https://stepsbuild.com' },
-  { name: 'Developers', color: '#10b981', icon: Code2,        href: 'https://api.slim-file.com/' },
+/* ─── Ring data ───────────────────────────────────────────────────── */
+const RINGS = [
+  {
+    radius: 105, duration: 22, reverse: false, size: 42,
+    items: [
+      { label: 'SlimVideo',  color: '#06b6d4', Icon: Video,    href: '#' },
+      { label: 'SlimAudio',  color: '#06b6d4', Icon: Music,    href: '#' },
+      { label: 'SlimImage',  color: '#06b6d4', Icon: Image,    href: 'https://www.slim-file.com/compress' },
+      { label: 'SlimDocs',   color: '#06b6d4', Icon: FileText, href: 'https://www.slim-file.com/compress' },
+      { label: 'SlimConvert',color: '#22d3ee', Icon: RefreshCw,href: 'https://www.slim-file.com/convert-only' },
+      { label: 'SlimMerge',  color: '#22d3ee', Icon: GitMerge, href: 'https://www.slim-file.com/forge' },
+      { label: 'SlimSplit',  color: '#22d3ee', Icon: Scissors, href: 'https://www.slim-file.com/forge' },
+    ],
+  },
+  {
+    radius: 188, duration: 34, reverse: true, size: 48,
+    items: [
+      { label: 'STEPsPro',  color: '#8b5cf6', Icon: Trophy,        href: 'https://stepsbuild.com/' },
+      { label: 'STEPsOps',  color: '#8b5cf6', Icon: Settings2,     href: 'https://stepsbuild.com/' },
+      { label: 'STEPsDocs', color: '#8b5cf6', Icon: BookOpen,      href: 'https://stepsbuild.com/' },
+      { label: 'B-Mail',    color: '#3b82f6', Icon: Mail,          href: '#' },
+      { label: 'B-Meet',    color: '#3b82f6', Icon: Video,         href: 'https://www.slim-file.com/meet' },
+      { label: 'B-Chat',    color: '#3b82f6', Icon: MessageSquare, href: 'https://www.slim-file.com/workspaces' },
+      { label: 'B-Docs',    color: '#a78bfa', Icon: FileText,      href: 'https://www.slim-file.com/documents' },
+      { label: 'B-Boards',  color: '#a78bfa', Icon: PenLine,       href: 'https://www.slim-file.com/my-whiteboards' },
+      { label: 'B-Summ',    color: '#a78bfa', Icon: AlignLeft,     href: 'https://www.slim-file.com/summarize' },
+    ],
+  },
+  {
+    radius: 272, duration: 48, reverse: false, size: 52,
+    items: [
+      { label: 'B-OCR',    color: '#a78bfa', Icon: ScanText,  href: 'https://www.slim-file.com/ocr-tool' },
+      { label: 'B-Market', color: '#f59e0b', Icon: Store,     href: '#' },
+      { label: 'B-Mall',   color: '#f59e0b', Icon: Building2, href: '#' },
+      { label: 'B-Mart',   color: '#f59e0b', Icon: Package,   href: '#' },
+      { label: 'SF SDK',   color: '#10b981', Icon: Code2,     href: 'https://www.npmjs.com/package/@slimfile/sdk' },
+      { label: 'SF CLI',   color: '#10b981', Icon: Terminal,  href: 'https://www.npmjs.com/package/@slimfile/cli' },
+      { label: 'API',      color: '#10b981', Icon: Globe,     href: 'https://api.slim-file.com/' },
+    ],
+  },
 ];
 
-const OUTER = [
-  { name: 'Beaver Connect', color: '#3b82f6', icon: MessageSquare, href: '#' },
-  { name: 'Beaver Office',  color: '#a78bfa', icon: LayoutGrid,    href: '#' },
-  { name: 'Beaver Dam',     color: '#f59e0b', icon: ShoppingBag,   href: '#' },
-];
-
-/* Place N items evenly on a ring using CSS transform */
-function Ring({ items, radius, duration, reverse, size = 52 }) {
-  const ringSize = radius * 2 + size;
+/* ─── Orbit ring ──────────────────────────────────────────────────── */
+function Ring({ radius, duration, reverse, size, items }) {
   return (
-    <div style={{
-      position: 'absolute',
-      width: ringSize, height: ringSize,
-      top: '50%', left: '50%',
-      transform: `translate(-50%, -50%)`,
-      borderRadius: '50%',
-      border: '1px solid rgba(255,255,255,0.07)',
-    }}>
+    <>
+      {/* Ring track */}
+      <div style={{
+        position: 'absolute',
+        top: '50%', left: '50%',
+        width: radius * 2, height: radius * 2,
+        transform: 'translate(-50%, -50%)',
+        borderRadius: '50%',
+        border: '1px solid rgba(255,255,255,0.06)',
+        pointerEvents: 'none',
+      }} />
+
+      {/* Orbiting items */}
       {items.map((item, i) => {
-        const Icon = item.icon;
         const isLive = item.href !== '#';
         return (
           <div
-            key={item.name}
-            className={`orbit-item orbit-item-${reverse ? 'ccw' : 'cw'}`}
+            key={item.label}
+            className={reverse ? 'orbit-ccw' : 'orbit-cw'}
             style={{
               position: 'absolute',
               top: '50%', left: '50%',
@@ -51,53 +85,54 @@ function Ring({ items, radius, duration, reverse, size = 52 }) {
               target={isLive ? '_blank' : undefined}
               rel="noopener noreferrer"
               onClick={e => { if (!isLive) e.preventDefault(); }}
-              title={item.name}
+              title={item.label}
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 4,
+                display: 'flex', flexDirection: 'column',
+                alignItems: 'center', justifyContent: 'center', gap: 3,
                 width: '100%', height: '100%',
                 borderRadius: '50%',
-                background: `${item.color}15`,
-                border: `1.5px solid ${item.color}40`,
+                background: `${item.color}14`,
+                border: `1.5px solid ${item.color}35`,
                 color: item.color,
                 textDecoration: 'none',
                 cursor: isLive ? 'pointer' : 'default',
-                transition: 'all 0.25s ease',
-                boxShadow: `0 0 0 0 ${item.color}`,
+                transition: 'background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s',
+                opacity: isLive ? 1 : 0.45,
               }}
               onMouseEnter={e => {
                 if (!isLive) return;
                 e.currentTarget.style.background = `${item.color}28`;
-                e.currentTarget.style.borderColor = `${item.color}80`;
-                e.currentTarget.style.boxShadow = `0 0 20px ${item.color}40`;
-                e.currentTarget.style.transform = 'scale(1.15)';
+                e.currentTarget.style.borderColor = `${item.color}70`;
+                e.currentTarget.style.boxShadow = `0 0 18px ${item.color}50`;
+                e.currentTarget.style.transform = 'scale(1.18)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.background = `${item.color}15`;
-                e.currentTarget.style.borderColor = `${item.color}40`;
+                e.currentTarget.style.background = `${item.color}14`;
+                e.currentTarget.style.borderColor = `${item.color}35`;
                 e.currentTarget.style.boxShadow = 'none';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              <Icon size={18} strokeWidth={1.8} />
+              <item.Icon size={size > 46 ? 17 : 15} strokeWidth={1.8} />
               <span style={{
-                fontSize: 8, fontWeight: 700, letterSpacing: '0.03em',
-                color: item.color, opacity: 0.85, whiteSpace: 'nowrap',
+                fontSize: size > 46 ? 7.5 : 7,
+                fontWeight: 700,
+                letterSpacing: '0.02em',
+                color: item.color,
+                whiteSpace: 'nowrap',
                 lineHeight: 1,
               }}>
-                {item.name.replace('Beaver ', '')}
+                {item.label}
               </span>
             </a>
           </div>
         );
       })}
-    </div>
+    </>
   );
 }
 
+/* ─── Hero ────────────────────────────────────────────────────────── */
 export default function Hero() {
   const canvasRef = useRef(null);
 
@@ -114,7 +149,7 @@ export default function Hero() {
       r: Math.random() * 1.2 + 0.2,
       vx: (Math.random() - 0.5) * 0.2,
       vy: (Math.random() - 0.5) * 0.2,
-      alpha: Math.random() * 0.25 + 0.05,
+      alpha: Math.random() * 0.2 + 0.04,
     }));
 
     let animId, visible = true;
@@ -165,9 +200,9 @@ export default function Hero() {
 
       {/* Animated blobs */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-        <div className="hero-blob blob-1" style={{ position: 'absolute', width: 650, height: 650, borderRadius: '50%', background: 'radial-gradient(circle, #7c3aed 0%, transparent 65%)', top: -250, left: -200, opacity: 0.22 }} />
-        <div className="hero-blob blob-2" style={{ position: 'absolute', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, #0891b2 0%, transparent 65%)', top: 60, right: -150, opacity: 0.16 }} />
-        <div className="hero-blob blob-3" style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, #d97706 0%, transparent 65%)', bottom: -80, left: '42%', opacity: 0.13 }} />
+        <div className="blob-1" style={{ position: 'absolute', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, #7c3aed 0%, transparent 65%)', top: -220, left: -180, opacity: 0.2 }} />
+        <div className="blob-2" style={{ position: 'absolute', width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, #0891b2 0%, transparent 65%)', top: 80, right: -140, opacity: 0.15 }} />
+        <div className="blob-3" style={{ position: 'absolute', width: 380, height: 380, borderRadius: '50%', background: 'radial-gradient(circle, #d97706 0%, transparent 65%)', bottom: -60, left: '40%', opacity: 0.12 }} />
       </div>
 
       {/* Split layout */}
@@ -210,10 +245,9 @@ export default function Hero() {
           </h1>
 
           <p style={{
-            fontSize: 'clamp(15px, 1.6vw, 18px)',
+            fontSize: 'clamp(15px, 1.5vw, 18px)',
             color: 'rgba(241,245,249,0.5)',
-            maxWidth: 460,
-            lineHeight: 1.75, fontWeight: 400,
+            maxWidth: 460, lineHeight: 1.75,
             marginBottom: 40,
           }}>
             The parent company behind{' '}
@@ -234,57 +268,34 @@ export default function Hero() {
         </div>
 
         {/* RIGHT — orbital rings */}
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          height: 520,
-          position: 'relative',
-        }}>
-          {/* Rings container */}
-          <div style={{ position: 'relative', width: 480, height: 480 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 620 }}>
+          <div style={{ position: 'relative', width: 580, height: 580 }}>
 
-            {/* Outer ring track */}
-            <div style={{
-              position: 'absolute', inset: 0,
-              borderRadius: '50%',
-              border: '1px solid rgba(255,255,255,0.06)',
-            }} />
-
-            {/* Inner ring track */}
-            <div style={{
-              position: 'absolute',
-              top: '50%', left: '50%',
-              width: 300, height: 300,
-              transform: 'translate(-50%, -50%)',
-              borderRadius: '50%',
-              border: '1px solid rgba(255,255,255,0.06)',
-            }} />
+            {RINGS.map((ring, i) => (
+              <Ring key={i} {...ring} />
+            ))}
 
             {/* Center orb */}
             <div style={{
               position: 'absolute',
               top: '50%', left: '50%',
-              width: 64, height: 64,
+              width: 68, height: 68,
               transform: 'translate(-50%, -50%)',
               borderRadius: '50%',
               background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 24, color: 'white',
-              boxShadow: '0 0 40px rgba(139,92,246,0.5), 0 0 80px rgba(139,92,246,0.2)',
+              fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 26, color: 'white',
+              boxShadow: '0 0 40px rgba(139,92,246,0.6), 0 0 80px rgba(139,92,246,0.2)',
               zIndex: 3,
             }}>B</div>
 
-            {/* Inner orbit — 3 items, radius 150 */}
-            <Ring items={INNER} radius={150} duration={22} reverse={false} size={56} />
-
-            {/* Outer orbit — 3 items, radius 225 */}
-            <Ring items={OUTER} radius={225} duration={32} reverse={true} size={60} />
           </div>
         </div>
       </div>
 
       {/* Scroll cue */}
       <div className="scroll-cue" style={{
-        position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', bottom: 28, left: '50%',
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5,
         color: 'rgba(241,245,249,0.2)', zIndex: 2,
       }}>
@@ -303,38 +314,30 @@ export default function Hero() {
           from { transform: rotate(0deg)    translateX(var(--r)) rotate(0deg); }
           to   { transform: rotate(-360deg) translateX(var(--r)) rotate(360deg); }
         }
-        .orbit-item-cw {
-          --r: 0px;
-          animation: orbit-cw linear infinite;
-        }
-        .orbit-item-ccw {
-          --r: 0px;
-          animation: orbit-ccw linear infinite;
-        }
+        .orbit-cw  { animation: orbit-cw  linear infinite; }
+        .orbit-ccw { animation: orbit-ccw linear infinite; }
         @keyframes blob1 {
           0%,100% { transform: translate(0,0) scale(1); }
-          33%      { transform: translate(40px,-30px) scale(1.06); }
-          66%      { transform: translate(-20px,20px) scale(0.95); }
+          40%     { transform: translate(35px,-25px) scale(1.05); }
         }
         @keyframes blob2 {
           0%,100% { transform: translate(0,0) scale(1); }
-          33%      { transform: translate(-30px,25px) scale(1.08); }
-          66%      { transform: translate(25px,-15px) scale(0.96); }
+          40%     { transform: translate(-28px,22px) scale(1.07); }
         }
         @keyframes blob3 {
           0%,100% { transform: translate(0,0) scale(1); }
-          50%      { transform: translate(20px,30px) scale(1.07); }
+          50%     { transform: translate(18px,28px) scale(1.06); }
         }
         @keyframes scrollBounce {
           0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.2; }
-          50%      { transform: translateX(-50%) translateY(6px); opacity: 0.4; }
+          50%     { transform: translateX(-50%) translateY(6px); opacity: 0.4; }
         }
         .blob-1 { animation: blob1 9s ease-in-out infinite; }
         .blob-2 { animation: blob2 11s ease-in-out infinite; }
         .blob-3 { animation: blob3 13s ease-in-out infinite; }
         .scroll-cue { animation: scrollBounce 2.5s ease-in-out infinite; }
-        @media (max-width: 768px) {
-          .hero-rings { display: none; }
+        @media (max-width: 900px) {
+          .orbit-rings-wrap { display: none; }
         }
       `}</style>
     </section>
