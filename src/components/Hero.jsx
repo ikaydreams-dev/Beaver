@@ -60,8 +60,8 @@ export default function Hero() {
       }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: 20,
+          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+          gap: 12,
         }}>
           {PRODUCTS.map((product) => {
             const isLive = product.href !== '#';
@@ -77,9 +77,9 @@ export default function Hero() {
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: 16,
-                  padding: '40px 20px',
-                  borderRadius: 16,
+                  gap: 10,
+                  padding: '24px 12px',
+                  borderRadius: 12,
                   background: `linear-gradient(135deg, ${product.color}08, ${product.color}03)`,
                   border: `1.5px solid ${product.color}35`,
                   textDecoration: 'none',
@@ -104,26 +104,27 @@ export default function Hero() {
               >
                 {/* Icon */}
                 <div style={{
-                  width: 64,
-                  height: 64,
-                  borderRadius: 12,
+                  width: 48,
+                  height: 48,
+                  borderRadius: 10,
                   background: `${product.color}15`,
                   border: `1px solid ${product.color}30`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                  <product.Icon size={32} strokeWidth={1.8} color={product.color} />
+                  <product.Icon size={24} strokeWidth={1.8} color={product.color} />
                 </div>
 
                 {/* Label */}
                 <h3 style={{
                   fontFamily: 'Poppins, sans-serif',
                   fontWeight: 700,
-                  fontSize: 18,
+                  fontSize: 14,
                   letterSpacing: '-0.02em',
                   color: product.color,
                   margin: 0,
+                  textAlign: 'center',
                 }}>
                   {product.label}
                 </h3>
@@ -131,12 +132,12 @@ export default function Hero() {
                 {/* Status badge */}
                 {!isLive && (
                   <span style={{
-                    fontSize: 10,
+                    fontSize: 8,
                     fontWeight: 600,
                     letterSpacing: '0.05em',
                     textTransform: 'uppercase',
                     color: 'rgba(241,245,249,0.3)',
-                    padding: '4px 12px',
+                    padding: '3px 8px',
                     borderRadius: 999,
                     background: 'rgba(255,255,255,0.03)',
                     border: '1px solid rgba(255,255,255,0.08)',
