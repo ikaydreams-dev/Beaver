@@ -80,6 +80,12 @@ const PRODUCTS = [
     url: 'petroleum.stepsbuild.com',
     color: '#0891b2',
   },
+  {
+    name: 'Training',
+    description: 'Learning & development platform',
+    url: 'training.stepsbuild.com',
+    color: '#a855f7',
+  },
 ];
 
 export default function Hero() {
