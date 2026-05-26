@@ -19,7 +19,7 @@ const PRODUCTS = [
   },
   {
     name: 'Pharmacy',
-    description: 'Healthcare management system',
+    description: 'Pharmacy reporting system',
     url: 'pharmacy.stepsbuild.com',
     color: '#10b981',
   },
