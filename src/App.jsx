@@ -1,21 +1,27 @@
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import WhyBeaver from './components/WhyBeaver';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 
 export default function App() {
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme') || 'dark';
+    setTheme(saved);
+    document.documentElement.setAttribute('data-theme', saved);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
-      <About />
-      <Services />
-      <WhyBeaver />
-      <Contact />
-      <Footer />
     </>
   );
 }
