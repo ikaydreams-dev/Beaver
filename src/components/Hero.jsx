@@ -28,7 +28,7 @@ const PRODUCTS = [
   },
   {
     name: 'Mall',
-    description: 'E-commerce platform',
+    description: 'Business listing platform',
     url: 'mall.beaver-llc.com',
     color: '#f59e0b',
   },
