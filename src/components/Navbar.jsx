@@ -41,7 +41,7 @@ export default function Navbar({ theme, toggleTheme }) {
             color: 'var(--text)',
             letterSpacing: '-0.5px',
           }}>
-            Beaver
+            Beaver Technologies
           </span>
         </a>
 
