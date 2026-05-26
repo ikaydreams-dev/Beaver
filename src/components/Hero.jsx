@@ -34,7 +34,7 @@ const PRODUCTS = [
   },
   {
     name: 'LeBoss',
-    description: 'Business management suite',
+    description: 'Task management',
     url: 'leboss.stepsbuild.com',
     color: '#ef4444',
   },
@@ -46,19 +46,19 @@ const PRODUCTS = [
   },
   {
     name: 'CID',
-    description: 'Identity management',
+    description: 'Digital dockets',
     url: 'cid.stepsbuild.com',
     color: '#8b5cf6',
   },
   {
     name: 'Score',
-    description: 'Performance metrics',
+    description: 'Reporting for GIZ',
     url: 'score.stepsbuild.com',
     color: '#06b6d4',
   },
   {
     name: 'Thesis',
-    description: 'Research & documentation',
+    description: 'University thesis management',
     url: 'thesis.stepsbuild.com',
     color: '#6366f1',
   },
@@ -70,7 +70,7 @@ const PRODUCTS = [
   },
   {
     name: 'Fire Safety',
-    description: 'Safety compliance tools',
+    description: 'Fire certification',
     url: 'firesafety.stepsbuild.com',
     color: '#f97316',
   },
