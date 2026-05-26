@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { X } from 'lucide-react';
+
 const PRODUCTS = [
   {
     name: 'SlimFile',
@@ -80,6 +83,7 @@ const PRODUCTS = [
 ];
 
 export default function Hero() {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   return (
     <main style={{
       minHeight: '100vh',
@@ -126,18 +130,19 @@ export default function Hero() {
           gap: 20,
         }}>
           {PRODUCTS.map((product) => (
-            <a
+            <button
               key={product.url}
-              href={`https://${product.url}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setSelectedProduct(product)}
               style={{
+                width: '100%',
                 display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'flex-start',
                 padding: '32px 24px',
                 background: 'var(--card-bg)',
                 border: '1px solid var(--border)',
                 borderRadius: 16,
+                textAlign: 'left',
                 textDecoration: 'none',
                 transition: 'all 0.3s ease',
                 cursor: 'pointer',
@@ -225,10 +230,138 @@ export default function Hero() {
                   />
                 </svg>
               </div>
-            </a>
+            </button>
           ))}
         </div>
       </div>
+
+      {/* Iframe Modal */}
+      {selectedProduct && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.8)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            zIndex: 1000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 20,
+          }}
+          onClick={() => setSelectedProduct(null)}
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: 1400,
+              height: '90vh',
+              background: 'var(--card-bg)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '16px 20px',
+                borderBottom: '1px solid var(--border)',
+                background: 'var(--nav-bg)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: 8,
+                    background: `${selectedProduct.color}15`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 16,
+                      height: 16,
+                      borderRadius: '50%',
+                      background: selectedProduct.color,
+                    }}
+                  />
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
+                      fontWeight: 600,
+                      fontSize: 16,
+                      color: 'var(--text)',
+                      margin: 0,
+                    }}
+                  >
+                    {selectedProduct.name}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'SF Mono, monospace',
+                      fontSize: 12,
+                      color: 'var(--text-secondary)',
+                      margin: 0,
+                    }}
+                  >
+                    {selectedProduct.url}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setSelectedProduct(null)}
+                style={{
+                  background: 'var(--card-bg)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 8,
+                  padding: 8,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text)',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'var(--border)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'var(--card-bg)';
+                }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Iframe */}
+            <iframe
+              src={`https://${selectedProduct.url}`}
+              style={{
+                width: '100%',
+                height: 'calc(100% - 65px)',
+                border: 'none',
+              }}
+              title={selectedProduct.name}
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
