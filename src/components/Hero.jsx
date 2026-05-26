@@ -76,13 +76,13 @@ const PRODUCTS = [
   },
   {
     name: 'Petroleum',
-    description: 'Energy sector solutions',
+    description: 'Reporting',
     url: 'petroleum.stepsbuild.com',
     color: '#0891b2',
   },
   {
     name: 'Training',
-    description: 'Learning & development platform',
+    description: 'Training management',
     url: 'training.stepsbuild.com',
     color: '#a855f7',
   },
