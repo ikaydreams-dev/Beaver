@@ -86,6 +86,18 @@ const PRODUCTS = [
     url: 'training.stepsbuild.com',
     color: '#a855f7',
   },
+  {
+    name: 'Reporting',
+    description: 'Automated reporting AI powered',
+    url: 'reporting.slim-file.com',
+    color: '#14b8a6',
+  },
+  {
+    name: 'Pharmanova',
+    description: 'Sales Software for Pharmanova Pharmaceutical Company',
+    url: 'pharmanova.stepsbuild.com',
+    color: '#22c55e',
+  },
 ];
 
 export default function Hero() {
