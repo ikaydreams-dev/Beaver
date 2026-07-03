@@ -103,7 +103,7 @@ https://search.google.com/search-console
 https://www.bing.com/webmasters
 
 # Submit your sitemap:
-https://beaver-llc.com/sitemap.xml
+https://www.beaver-llc.com/sitemap.xml
 ```
 
 ### 2. Google My Business

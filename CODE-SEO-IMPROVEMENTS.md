@@ -26,7 +26,7 @@ A powerful React component that dynamically updates page metadata for each route
   title="Page Title | Beaver Technologies"
   description="Page description for SEO"
   keywords="keyword1, keyword2, keyword3"
-  canonical="https://beaver-llc.com/page"
+  canonical="https://www.beaver-llc.com/page"
   ogTitle="Social media title"
   ogDescription="Social media description"
   structuredData={jsonLdObject}

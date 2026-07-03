@@ -110,7 +110,7 @@ export default function Hero() {
     "@type": "CollectionPage",
     "name": "Our Products - Beaver Technologies",
     "description": "Explore 14+ enterprise software products built by Beaver Technologies for companies, institutions, and governments worldwide.",
-    "url": "https://beaver-llc.com/products",
+    "url": "https://www.beaver-llc.com/products",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -118,13 +118,13 @@ export default function Hero() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://beaver-llc.com"
+          "item": "https://www.beaver-llc.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Products",
-          "item": "https://beaver-llc.com/products"
+          "item": "https://www.beaver-llc.com/products"
         }
       ]
     },
@@ -153,7 +153,7 @@ export default function Hero() {
         title="Our Products - Enterprise Software Solutions | Beaver Technologies"
         description="Explore 14+ enterprise software products: STEPsBuild, SlimFile, LogBook, Pharmacy, Mall, LeBoss, and more. Built for companies, institutions, and governments worldwide."
         keywords="enterprise software products, business software, STEPsBuild, SlimFile, LogBook, project management, document management, pharmacy software, mall platform, expense tracking, thesis management"
-        canonical="https://beaver-llc.com/products"
+        canonical="https://www.beaver-llc.com/products"
         ogTitle="Our Products - Beaver Technologies"
         ogDescription="14+ enterprise software products including STEPsBuild, SlimFile, LogBook, and specialized solutions for various industries."
         structuredData={productsStructuredData}

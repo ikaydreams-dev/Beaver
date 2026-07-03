@@ -7,12 +7,12 @@ export default function Landing({ onNavigate }) {
     "@type": "WebPage",
     "name": "Beaver Technologies - Enterprise Software Solutions",
     "description": "Beaver Technologies builds purposeful software for companies, institutions, and governments. 14+ enterprise products serving organizations globally.",
-    "url": "https://beaver-llc.com",
+    "url": "https://www.beaver-llc.com",
     "mainEntity": {
       "@type": "Organization",
       "name": "Beaver Technologies",
-      "url": "https://beaver-llc.com",
-      "logo": "https://beaver-llc.com/new-logo-1.png",
+      "url": "https://www.beaver-llc.com",
+      "logo": "https://www.beaver-llc.com/new-logo-1.png",
       "email": "admin@beaver-llc.com"
     },
     "breadcrumb": {
@@ -21,7 +21,7 @@ export default function Landing({ onNavigate }) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://beaver-llc.com"
+        "item": "https://www.beaver-llc.com"
       }]
     }
   };
@@ -32,7 +32,7 @@ export default function Landing({ onNavigate }) {
         title="Beaver Technologies — We Build What Matters | Enterprise Software Solutions"
         description="Beaver Technologies builds purposeful software for companies, institutions, and governments. 14+ enterprise products including STEPsBuild, SlimFile, LogBook, and more. Contact: admin@beaver-llc.com"
         keywords="Beaver Technologies, enterprise software, business software solutions, STEPsBuild, SlimFile, project management, document management, SaaS solutions, custom software development"
-        canonical="https://beaver-llc.com"
+        canonical="https://www.beaver-llc.com"
         ogTitle="Beaver Technologies — We Build What Matters"
         ogDescription="14+ enterprise software products built for companies, institutions, and governments worldwide. Solutions for project management, document handling, and business automation."
         structuredData={structuredData}
