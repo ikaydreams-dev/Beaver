@@ -29,12 +29,12 @@ export default function Landing({ onNavigate }) {
   return (
     <>
       <SEO
-        title="Beaver Technologies — We Build What Matters | Enterprise Software Solutions"
-        description="Beaver Technologies builds purposeful software for companies, institutions, and governments. 14+ enterprise products including STEPsBuild, SlimFile, LogBook, and more. Contact: admin@beaver-llc.com"
-        keywords="Beaver Technologies, enterprise software, business software solutions, STEPsBuild, SlimFile, project management, document management, SaaS solutions, custom software development"
+        title="Beaver Technologies | Beaver - Enterprise Software Solutions for Companies, Institutions & Governments"
+        description="Beaver Technologies (Beaver) builds purposeful enterprise software for companies, institutions, and governments worldwide. 14+ products including STEPsBuild, SlimFile, LogBook, Reporting, Pharmanova. Contact: admin@beaver-llc.com"
+        keywords="Beaver, Beaver Technologies, Beaver LLC, enterprise software, business software solutions, STEPsBuild, SlimFile, project management software, document management, SaaS solutions, custom software development"
         canonical="https://www.beaver-llc.com"
-        ogTitle="Beaver Technologies — We Build What Matters"
-        ogDescription="14+ enterprise software products built for companies, institutions, and governments worldwide. Solutions for project management, document handling, and business automation."
+        ogTitle="Beaver Technologies | Beaver - Enterprise Software Solutions"
+        ogDescription="Beaver Technologies (Beaver) builds purposeful enterprise software for companies, institutions, and governments. 14+ products serving organizations globally."
         structuredData={structuredData}
       />
       <main style={{
@@ -90,16 +90,15 @@ export default function Landing({ onNavigate }) {
             maxWidth: 1000,
             margin: '0 auto 24px',
           }}>
-            Purposeful software for{' '}
             <span style={{
               background: 'linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
             }}>
-              organizations
+              Beaver Technologies
             </span>
-            {' '}that build the future
+            {' '}— Purposeful software for organizations that build the future
           </h1>
 
           {/* Subheadline */}
@@ -111,7 +110,7 @@ export default function Landing({ onNavigate }) {
             margin: '0 auto 48px',
             lineHeight: 1.6,
           }}>
-            We build intelligent platforms that solve real problems for companies, institutions, and governments across the globe.
+            Beaver builds intelligent enterprise software platforms that solve real problems for companies, institutions, and governments across the globe.
           </p>
 
           {/* CTA Button */}
