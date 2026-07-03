@@ -30,7 +30,7 @@ export default function Navbar({ theme, toggleTheme }) {
           gap: 12,
         }}>
           <img
-            src="/logo-transparent.png"
+            src="/new-logo-1.png"
             alt="Beaver"
             style={{ height: 40 }}
           />
