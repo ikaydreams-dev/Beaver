@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Products from './components/Products';
+import Footer from './components/Footer';
 
 export default function App() {
   const [theme, setTheme] = useState('dark');
@@ -26,18 +27,25 @@ export default function App() {
   };
 
   return (
-    <>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
       <Navbar
         theme={theme}
         toggleTheme={toggleTheme}
         currentPage={currentPage}
         onNavigate={navigateTo}
       />
-      {currentPage === 'landing' ? (
-        <Landing onNavigate={navigateTo} />
-      ) : (
-        <Products />
-      )}
-    </>
+      <div style={{ flex: 1 }}>
+        {currentPage === 'landing' ? (
+          <Landing onNavigate={navigateTo} />
+        ) : (
+          <Products />
+        )}
+      </div>
+      <Footer />
+    </div>
   );
 }
