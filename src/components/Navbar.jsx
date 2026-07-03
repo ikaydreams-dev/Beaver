@@ -125,6 +125,35 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
             Products
           </button>
 
+          <button
+            onClick={() => onNavigate('blog')}
+            aria-label="Navigate to blog page"
+            aria-current={currentPage === 'blog' ? 'page' : undefined}
+            style={{
+              background: 'none',
+              border: 'none',
+              padding: '8px 16px',
+              cursor: 'pointer',
+              fontSize: 15,
+              fontWeight: 500,
+              color: currentPage === 'blog' ? activeColor : 'var(--text-secondary)',
+              transition: 'all 0.2s ease',
+              borderBottom: currentPage === 'blog' ? `2px solid ${activeColor}` : '2px solid transparent',
+            }}
+            onMouseEnter={e => {
+              if (currentPage !== 'blog') {
+                e.currentTarget.style.color = 'var(--text)';
+              }
+            }}
+            onMouseLeave={e => {
+              if (currentPage !== 'blog') {
+                e.currentTarget.style.color = 'var(--text-secondary)';
+              }
+            }}
+          >
+            Blog
+          </button>
+
           {/* Email */}
           <a
             href="mailto:admin@beaver-llc.com"
