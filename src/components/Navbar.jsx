@@ -37,7 +37,7 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
           }}
         >
           <img
-            src="/new-logo-1.png"
+            src={theme === 'dark' ? '/new-logo-2.jpg' : '/new-logo-1.png'}
             alt="Beaver"
             style={{ height: 40 }}
           />
