@@ -237,10 +237,7 @@ const initialPosts = [
     author: 'Beaver Technologies',
     keywords: 'SaaS vs on-premise, cloud software, enterprise software deployment, software licensing, IT infrastructure',
     readTime: '8 min read'
-  }
-];
-
-  // Continuing with more blog posts...
+  },
   {
     id: 6,
     slug: 'document-management-best-practices',
