@@ -1,4 +1,6 @@
-export const blogPosts = [
+import { additionalPosts } from './additionalPosts';
+
+const initialPosts = [
   // Industry Guides
   {
     id: 1,
@@ -508,3 +510,6 @@ export const blogPosts = [
     readTime: '9 min read'
   }
 ];
+
+// Merge initial posts with additional posts
+export const blogPosts = [...initialPosts, ...additionalPosts];

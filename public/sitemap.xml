@@ -22,4 +22,32 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Blog Pages -->
+  <url>
+    <loc>https://www.beaver-llc.com/blog</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Posts (30 SEO-optimized articles) -->
+  <url>
+    <loc>https://www.beaver-llc.com/blog/complete-guide-enterprise-software-selection</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.beaver-llc.com/blog/government-software-procurement-guide</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.beaver-llc.com/blog/project-management-large-organizations</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
