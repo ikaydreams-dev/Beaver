@@ -4,7 +4,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{
+    <footer
+      role="contentinfo"
+      aria-label="Site footer"
+      style={{
       background: 'var(--card-bg)',
       borderTop: '1px solid var(--border)',
       padding: '60px 24px 32px',
@@ -61,6 +64,7 @@ export default function Footer() {
               {/* Email */}
               <a
                 href="mailto:admin@beaver-llc.com"
+                aria-label="Email Beaver Technologies at admin@beaver-llc.com"
                 style={{
                   display: 'flex',
                   alignItems: 'center',

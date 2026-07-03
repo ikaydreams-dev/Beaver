@@ -4,18 +4,21 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
   const activeColor = theme === 'dark' ? '#3b82f6' : '#1e3a8a';
 
   return (
-    <nav style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 100,
-      background: 'var(--nav-bg)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
-      borderBottom: '1px solid var(--border)',
-      transition: 'all 0.3s ease',
-    }}>
+    <nav
+      role="navigation"
+      aria-label="Main navigation"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        background: 'var(--nav-bg)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid var(--border)',
+        transition: 'all 0.3s ease',
+      }}>
       <div style={{
         maxWidth: 1200,
         margin: '0 auto',
@@ -27,6 +30,7 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
         {/* Logo */}
         <button
           onClick={() => onNavigate('landing')}
+          aria-label="Go to Beaver Technologies homepage"
           style={{
             background: 'none',
             border: 'none',
@@ -40,7 +44,9 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
         >
           <img
             src={theme === 'dark' ? '/new-logo-2.jpg' : '/new-logo-1.png'}
-            alt="Beaver"
+            alt="Beaver Technologies Logo - Enterprise Software Solutions"
+            width="40"
+            height="40"
             style={{ height: 40 }}
           />
           <span style={{
@@ -63,6 +69,8 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
           {/* Navigation Links */}
           <button
             onClick={() => onNavigate('landing')}
+            aria-label="Navigate to home page"
+            aria-current={currentPage === 'landing' ? 'page' : undefined}
             style={{
               background: 'none',
               border: 'none',
@@ -90,6 +98,8 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
 
           <button
             onClick={() => onNavigate('products')}
+            aria-label="Navigate to products page"
+            aria-current={currentPage === 'products' ? 'page' : undefined}
             style={{
               background: 'none',
               border: 'none',
@@ -118,6 +128,7 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
           {/* Email */}
           <a
             href="mailto:admin@beaver-llc.com"
+            aria-label="Contact Beaver Technologies via email"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -146,6 +157,7 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             style={{
               background: 'var(--card-bg)',
               border: '1px solid var(--border)',

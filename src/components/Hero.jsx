@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import SEO from './SEO';
 
 const PRODUCTS = [
   {
@@ -102,10 +103,64 @@ const PRODUCTS = [
 
 export default function Hero() {
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // Generate structured data for all products
+  const productsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Our Products - Beaver Technologies",
+    "description": "Explore 14+ enterprise software products built by Beaver Technologies for companies, institutions, and governments worldwide.",
+    "url": "https://beaver-llc.com/products",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://beaver-llc.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": "https://beaver-llc.com/products"
+        }
+      ]
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": PRODUCTS.map((product, index) => ({
+        "@type": "SoftwareApplication",
+        "position": index + 1,
+        "name": product.name,
+        "description": product.description,
+        "url": `https://${product.url}`,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }))
+    }
+  };
+
   return (
-    <main style={{
-      minHeight: '100vh',
-      padding: '120px 24px 60px',
+    <>
+      <SEO
+        title="Our Products - Enterprise Software Solutions | Beaver Technologies"
+        description="Explore 14+ enterprise software products: STEPsBuild, SlimFile, LogBook, Pharmacy, Mall, LeBoss, and more. Built for companies, institutions, and governments worldwide."
+        keywords="enterprise software products, business software, STEPsBuild, SlimFile, LogBook, project management, document management, pharmacy software, mall platform, expense tracking, thesis management"
+        canonical="https://beaver-llc.com/products"
+        ogTitle="Our Products - Beaver Technologies"
+        ogDescription="14+ enterprise software products including STEPsBuild, SlimFile, LogBook, and specialized solutions for various industries."
+        structuredData={productsStructuredData}
+      />
+      <main style={{
+        minHeight: '100vh',
+        padding: '120px 24px 60px',
       background: 'var(--bg)',
       transition: 'background 0.3s ease',
     }}>
@@ -381,5 +436,6 @@ export default function Hero() {
         </div>
       )}
     </main>
+    </>
   );
 }
