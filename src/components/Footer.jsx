@@ -42,36 +42,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 style={{
-              fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
-              fontSize: 16,
-              fontWeight: 600,
-              color: 'var(--text)',
-              marginBottom: 16,
-            }}>
-              Products
-            </h4>
-            <ul style={{
-              listStyle: 'none',
-              padding: 0,
-              margin: 0,
-            }}>
-              {['SlimFile', 'STEPsBuild', 'LogBook', 'Pharmacy', 'Mall', 'LeBoss'].map((product) => (
-                <li key={product} style={{ marginBottom: 12 }}>
-                  <span style={{
-                    fontSize: 15,
-                    color: 'var(--text-secondary)',
-                    transition: 'color 0.2s ease',
-                  }}>
-                    {product}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Contact */}
           <div>
             <h4 style={{
