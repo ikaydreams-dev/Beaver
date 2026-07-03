@@ -1,6 +1,8 @@
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Mail } from 'lucide-react';
 
 export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) {
+  const activeColor = theme === 'dark' ? '#3b82f6' : '#1e3a8a';
+
   return (
     <nav style={{
       position: 'fixed',
@@ -68,9 +70,9 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
               cursor: 'pointer',
               fontSize: 15,
               fontWeight: 500,
-              color: currentPage === 'landing' ? 'var(--navy)' : 'var(--text-secondary)',
+              color: currentPage === 'landing' ? activeColor : 'var(--text-secondary)',
               transition: 'all 0.2s ease',
-              borderBottom: currentPage === 'landing' ? '2px solid var(--navy)' : '2px solid transparent',
+              borderBottom: currentPage === 'landing' ? `2px solid ${activeColor}` : '2px solid transparent',
             }}
             onMouseEnter={e => {
               if (currentPage !== 'landing') {
@@ -95,9 +97,9 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
               cursor: 'pointer',
               fontSize: 15,
               fontWeight: 500,
-              color: currentPage === 'products' ? 'var(--navy)' : 'var(--text-secondary)',
+              color: currentPage === 'products' ? activeColor : 'var(--text-secondary)',
               transition: 'all 0.2s ease',
-              borderBottom: currentPage === 'products' ? '2px solid var(--navy)' : '2px solid transparent',
+              borderBottom: currentPage === 'products' ? `2px solid ${activeColor}` : '2px solid transparent',
             }}
             onMouseEnter={e => {
               if (currentPage !== 'products') {
@@ -112,6 +114,34 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
           >
             Products
           </button>
+
+          {/* Email */}
+          <a
+            href="mailto:admin@beaver-llc.com"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '8px 12px',
+              textDecoration: 'none',
+              color: 'var(--text-secondary)',
+              fontSize: 14,
+              fontWeight: 500,
+              transition: 'all 0.2s ease',
+              borderRadius: 6,
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.color = activeColor;
+              e.currentTarget.style.background = 'var(--card-bg)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.color = 'var(--text-secondary)';
+              e.currentTarget.style.background = 'transparent';
+            }}
+          >
+            <Mail size={16} />
+            <span>Contact</span>
+          </a>
 
           {/* Theme Toggle */}
           <button
