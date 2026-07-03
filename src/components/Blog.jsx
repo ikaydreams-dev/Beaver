@@ -41,7 +41,7 @@ export default function Blog({ onNavigate, onViewPost }) {
 
       <main style={{
         minHeight: '100vh',
-        padding: '120px 24px 60px',
+        padding: '100px 16px 60px',
         background: 'var(--bg)',
       }}>
         <div style={{
@@ -116,8 +116,8 @@ export default function Blog({ onNavigate, onViewPost }) {
           {/* Blog Grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: 32,
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))',
+            gap: 20,
           }}>
             {filteredPosts.map((post) => (
               <article
@@ -140,7 +140,7 @@ export default function Blog({ onNavigate, onViewPost }) {
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <div style={{ padding: 32 }}>
+                <div style={{ padding: 'clamp(20px, 4vw, 32px)' }}>
                   {/* Category Badge */}
                   <span style={{
                     display: 'inline-block',
@@ -196,8 +196,8 @@ export default function Blog({ onNavigate, onViewPost }) {
 
           {/* CTA Section */}
           <div style={{
-            marginTop: 80,
-            padding: 60,
+            marginTop: 60,
+            padding: 'clamp(24px, 5vw, 60px)',
             background: 'var(--card-bg)',
             border: '1px solid var(--border)',
             borderRadius: 16,
@@ -206,14 +206,14 @@ export default function Blog({ onNavigate, onViewPost }) {
             <h2 style={{
               fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
               fontWeight: 600,
-              fontSize: 32,
+              fontSize: 'clamp(24px, 4vw, 32px)',
               color: 'var(--text)',
               marginBottom: 16,
             }}>
               Ready to transform your organization?
             </h2>
             <p style={{
-              fontSize: 18,
+              fontSize: 'clamp(16px, 2.5vw, 18px)',
               color: 'var(--text-secondary)',
               marginBottom: 32,
             }}>

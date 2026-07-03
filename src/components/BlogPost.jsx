@@ -54,7 +54,7 @@ export default function BlogPost({ slug, onBack }) {
 
       <main style={{
         minHeight: '100vh',
-        padding: '120px 24px 60px',
+        padding: '100px 16px 60px',
         background: 'var(--bg)',
       }}>
         <article style={{
@@ -124,8 +124,9 @@ export default function BlogPost({ slug, onBack }) {
             paddingBottom: 32,
             marginBottom: 40,
             borderBottom: '1px solid var(--border)',
-            fontSize: 14,
+            fontSize: 'clamp(13px, 2vw, 14px)',
             color: 'var(--text-secondary)',
+            flexWrap: 'wrap',
           }}>
             <span>{post.author}</span>
             <span>•</span>
@@ -189,7 +190,7 @@ export default function BlogPost({ slug, onBack }) {
           {/* CTA */}
           <div style={{
             marginTop: 60,
-            padding: 40,
+            padding: 'clamp(24px, 5vw, 40px)',
             background: 'var(--card-bg)',
             border: '1px solid var(--border)',
             borderRadius: 16,
@@ -198,14 +199,14 @@ export default function BlogPost({ slug, onBack }) {
             <h3 style={{
               fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
               fontWeight: 600,
-              fontSize: 24,
+              fontSize: 'clamp(20px, 3.5vw, 24px)',
               color: 'var(--text)',
               marginBottom: 12,
             }}>
               Need enterprise software solutions?
             </h3>
             <p style={{
-              fontSize: 16,
+              fontSize: 'clamp(14px, 2.2vw, 16px)',
               color: 'var(--text-secondary)',
               marginBottom: 24,
             }}>
@@ -236,7 +237,7 @@ export default function BlogPost({ slug, onBack }) {
         .blog-content h2 {
           font-family: 'SF Pro Display', -apple-system, system-ui, sans-serif;
           font-weight: 600;
-          font-size: 32px;
+          font-size: clamp(24px, 5vw, 32px);
           color: var(--text);
           margin-top: 48px;
           margin-bottom: 20px;
@@ -246,7 +247,7 @@ export default function BlogPost({ slug, onBack }) {
         .blog-content h3 {
           font-family: 'SF Pro Display', -apple-system, system-ui, sans-serif;
           font-weight: 600;
-          font-size: 24px;
+          font-size: clamp(20px, 4vw, 24px);
           color: var(--text);
           margin-top: 36px;
           margin-bottom: 16px;
@@ -255,6 +256,8 @@ export default function BlogPost({ slug, onBack }) {
         .blog-content p {
           margin-bottom: 24px;
           color: var(--text);
+          font-size: clamp(16px, 2.5vw, 18px);
+          line-height: 1.8;
         }
 
         .blog-content strong {

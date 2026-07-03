@@ -1,6 +1,8 @@
-import { Sun, Moon, Mail } from 'lucide-react';
+import { Sun, Moon, Mail, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const activeColor = theme === 'dark' ? '#3b82f6' : '#1e3a8a';
 
   return (
@@ -22,7 +24,7 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
       <div style={{
         maxWidth: 1200,
         margin: '0 auto',
-        padding: '16px 24px',
+        padding: '12px 16px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -39,33 +41,54 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
-            gap: 12,
+            gap: 8,
           }}
         >
           <img
             src={theme === 'dark' ? '/new-logo-2.jpg' : '/new-logo-1.png'}
             alt="Beaver Technologies Logo - Enterprise Software Solutions"
-            width="40"
-            height="40"
-            style={{ height: 40 }}
+            width="32"
+            height="32"
+            style={{ height: 32, flexShrink: 0 }}
           />
           <span style={{
             fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
             fontWeight: 600,
-            fontSize: 20,
+            fontSize: 'clamp(14px, 4vw, 20px)',
             color: 'var(--text)',
             letterSpacing: '-0.5px',
+            whiteSpace: 'nowrap',
           }}>
             Beaver Technologies
           </span>
         </button>
 
-        {/* Nav Links & Theme Toggle */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 16,
-        }}>
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+          style={{
+            display: 'none',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 8,
+            color: 'var(--text)',
+          }}
+          className="mobile-menu-btn"
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Desktop Nav Links & Theme Toggle */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 16,
+          }}
+          className="desktop-nav"
+        >
           {/* Navigation Links */}
           <button
             onClick={() => onNavigate('landing')}
@@ -214,7 +237,131 @@ export default function Navbar({ theme, toggleTheme, currentPage, onNavigate }) 
             {theme === 'dark' ? 'Light' : 'Dark'}
           </button>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              background: 'var(--nav-bg)',
+              borderBottom: '1px solid var(--border)',
+              padding: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 8,
+            }}
+            className="mobile-menu"
+          >
+            <button
+              onClick={() => { onNavigate('landing'); setMobileMenuOpen(false); }}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: '12px 16px',
+                cursor: 'pointer',
+                fontSize: 16,
+                fontWeight: 500,
+                color: currentPage === 'landing' ? activeColor : 'var(--text)',
+                textAlign: 'left',
+                borderRadius: 8,
+                transition: 'all 0.2s ease',
+              }}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => { onNavigate('products'); setMobileMenuOpen(false); }}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: '12px 16px',
+                cursor: 'pointer',
+                fontSize: 16,
+                fontWeight: 500,
+                color: currentPage === 'products' ? activeColor : 'var(--text)',
+                textAlign: 'left',
+                borderRadius: 8,
+                transition: 'all 0.2s ease',
+              }}
+            >
+              Products
+            </button>
+            <button
+              onClick={() => { onNavigate('blog'); setMobileMenuOpen(false); }}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: '12px 16px',
+                cursor: 'pointer',
+                fontSize: 16,
+                fontWeight: 500,
+                color: currentPage === 'blog' ? activeColor : 'var(--text)',
+                textAlign: 'left',
+                borderRadius: 8,
+                transition: 'all 0.2s ease',
+              }}
+            >
+              Blog
+            </button>
+            <a
+              href="mailto:admin@beaver-llc.com"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '12px 16px',
+                textDecoration: 'none',
+                color: 'var(--text)',
+                fontSize: 16,
+                fontWeight: 500,
+                borderRadius: 8,
+              }}
+            >
+              <Mail size={18} />
+              Contact
+            </a>
+            <button
+              onClick={toggleTheme}
+              style={{
+                background: 'var(--card-bg)',
+                border: '1px solid var(--border)',
+                borderRadius: 8,
+                padding: '12px 16px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                color: 'var(--text)',
+                fontSize: 16,
+                fontWeight: 500,
+              }}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </button>
+          </div>
+        )}
       </div>
+
+      {/* Mobile Responsive Styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          .mobile-menu-btn {
+            display: block !important;
+          }
+        }
+        @media (min-width: 769px) {
+          .mobile-menu {
+            display: none !important;
+          }
+        }
+      `}</style>
     </nav>
   );
 }
