@@ -99,6 +99,36 @@ const PRODUCTS = [
     url: 'pharmanova.stepsbuild.com',
     color: '#22c55e',
   },
+  {
+    name: 'ProjectPro',
+    description: 'Project management and collaboration',
+    url: 'projectpro.stepsbuild.com',
+    color: '#3b82f6',
+  },
+  {
+    name: 'TenderPro',
+    description: 'Tender and procurement management',
+    url: 'tender.stepsbuild.com',
+    color: '#8b5cf6',
+  },
+  {
+    name: 'AttendancePro',
+    description: 'Attendance tracking and management',
+    url: 'attendance.stepsbuild.com',
+    color: '#10b981',
+  },
+  {
+    name: 'BookkeepingPro',
+    description: 'Accounting and bookkeeping solution',
+    url: 'bookkeeping.stepsbuild.com',
+    color: '#f59e0b',
+  },
+  {
+    name: 'GOC',
+    description: 'Ghana Oil Company management system',
+    url: 'goc.stepsbuild.com',
+    color: '#0891b2',
+  },
 ];
 
 export default function Hero() {
@@ -151,11 +181,11 @@ export default function Hero() {
     <>
       <SEO
         title="Our Products - Enterprise Software Solutions | Beaver Technologies"
-        description="Explore 14+ enterprise software products: STEPsBuild, SlimFile, LogBook, Pharmacy, Mall, LeBoss, and more. Built for companies, institutions, and governments worldwide."
+        description="Explore 20+ enterprise software products: STEPsBuild, SlimFile, LogBook, Pharmacy, Mall, LeBoss, and more. Built for companies, institutions, and governments worldwide."
         keywords="enterprise software products, business software, STEPsBuild, SlimFile, LogBook, project management, document management, pharmacy software, mall platform, expense tracking, thesis management"
         canonical="https://www.beaver-llc.com/products"
         ogTitle="Our Products - Beaver Technologies"
-        ogDescription="14+ enterprise software products including STEPsBuild, SlimFile, LogBook, and specialized solutions for various industries."
+        ogDescription="20+ enterprise software products including STEPsBuild, SlimFile, LogBook, and specialized solutions for various industries."
         structuredData={productsStructuredData}
       />
       <main style={{
