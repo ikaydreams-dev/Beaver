@@ -27,6 +27,7 @@ const PRODUCTS = [
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -115,14 +116,18 @@ export default function Hero() {
             </div>
             <div className="products">
               {PRODUCTS.map(([name, tag, url], i) => (
-                <a key={i} className="card" href={`https://${url}`} target="_blank" rel="noopener noreferrer">
+                <button
+                  key={i}
+                  className="card"
+                  onClick={() => setSelectedProduct({ name, tag, url })}
+                >
                   <div className="card__top">
                     <span className="card__chip">{name[0]}</span>
                     <span className="card__no">{String(i + 1).padStart(2, '0')}</span>
                   </div>
                   <div className="card__name">{name}</div>
                   <div className="card__tag">{tag}</div>
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -250,8 +255,14 @@ export default function Hero() {
             <div>
               <h4>Platforms</h4>
               <div className="foot-products">
-                {PRODUCTS.map(([name, , url], i) => (
-                  <a key={i} href={`https://${url}`} target="_blank" rel="noopener noreferrer">{name}</a>
+                {PRODUCTS.map(([name, tag, url], i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedProduct({ name, tag, url })}
+                    style={{background:'none',border:'none',padding:0,cursor:'pointer',textAlign:'left'}}
+                  >
+                    {name}
+                  </button>
                 ))}
               </div>
             </div>
@@ -270,6 +281,43 @@ export default function Hero() {
           </div>
         </div>
       </footer>
+
+      {/* Product Preview Modal */}
+      {selectedProduct && (
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedProduct(null)}
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header">
+              <div className="modal-title">
+                <span className="modal-chip">{selectedProduct.name[0]}</span>
+                <div>
+                  <h3>{selectedProduct.name}</h3>
+                  <p>{selectedProduct.url}</p>
+                </div>
+              </div>
+              <button
+                className="modal-close"
+                onClick={() => setSelectedProduct(null)}
+                aria-label="Close"
+              >
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <iframe
+              src={`https://${selectedProduct.url}`}
+              title={selectedProduct.name}
+              className="modal-iframe"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
