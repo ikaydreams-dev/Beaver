@@ -13,7 +13,7 @@ const PRODUCTS = [
   ["ScorePro", "Training and Coaching Management", "score.stepsbuild.com"],
   ["ThesisPro", "Thesis Management", "thesis.stepsbuild.com"],
   ["LoanPro", "Loan Application Management", "loan.stepsbuild.com"],
-  ["Fire Safety", "Fire certification", "firesafety.stepsbuild.com"],
+  ["CertificationPro", "Fire certification", "firesafety.stepsbuild.com"],
   ["VendorPro", "Vendor Management", "petroleum.stepsbuild.com"],
   ["TrainingPro", "Organizational Training Management", "training.stepsbuild.com"],
   ["ReportingPro", "Organizational Reporting System", "reporting.stepsbuild.com"],
