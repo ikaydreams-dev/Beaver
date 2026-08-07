@@ -1,471 +1,275 @@
-import { useState } from 'react';
-import { X } from 'lucide-react';
-import SEO from './SEO';
+import { useState, useEffect } from 'react';
+import './Hero.css';
 
 const PRODUCTS = [
-  {
-    name: 'SlimFile',
-    description: 'Compress, convert & collaborate',
-    url: 'slim-file.com',
-    color: '#06b6d4',
-  },
-  {
-    name: 'STEPsBuild',
-    description: 'Project management reimagined',
-    url: 'stepsbuild.com',
-    color: '#8b5cf6',
-  },
-  {
-    name: 'LogbookPro',
-    description: 'Track and document everything',
-    url: 'logbook.stepsbuild.com',
-    color: '#3b82f6',
-  },
-  {
-    name: 'HealthPro',
-    description: 'Health Reporting System',
-    url: 'pharmacy.stepsbuild.com',
-    color: '#10b981',
-  },
-  {
-    name: 'MarketplacePro',
-    description: 'eMart | eMall | eMarket',
-    url: 'mall.beaver-llc.com',
-    color: '#f59e0b',
-  },
-  {
-    name: 'LeBoss',
-    description: 'Personal Assistant | Task Management | Information Storage',
-    url: 'leboss.stepsbuild.com',
-    color: '#ef4444',
-  },
-  {
-    name: 'ExpenseVault',
-    description: 'Digitize Receipts | Voucher Automation',
-    url: 'expense.stepsbuild.com',
-    color: '#ec4899',
-  },
-  {
-    name: 'DigitalPro',
-    description: 'Digitize and Store Documents',
-    url: 'cid.stepsbuild.com',
-    color: '#8b5cf6',
-  },
-  {
-    name: 'ScorePro',
-    description: 'Training and Coaching Management',
-    url: 'score.stepsbuild.com',
-    color: '#06b6d4',
-  },
-  {
-    name: 'ThesisPro',
-    description: 'Thesis Management',
-    url: 'thesis.stepsbuild.com',
-    color: '#6366f1',
-  },
-  {
-    name: 'LoanPro',
-    description: 'Loan Application Management',
-    url: 'bankloan.stepsbuild.com',
-    color: '#10b981',
-  },
-  {
-    name: 'Fire Safety',
-    description: 'Fire certification',
-    url: 'firesafety.stepsbuild.com',
-    color: '#f97316',
-  },
-  {
-    name: 'VendorPro',
-    description: 'Vendor Management',
-    url: 'petroleum.stepsbuild.com',
-    color: '#0891b2',
-  },
-  {
-    name: 'TrainingPro',
-    description: 'Organizational Training Management',
-    url: 'training.stepsbuild.com',
-    color: '#a855f7',
-  },
-  {
-    name: 'ReportingPro',
-    description: 'Organizational Reporting System',
-    url: 'reporting.stepsbuild.com',
-    color: '#14b8a6',
-  },
-  {
-    name: 'SalesPro',
-    description: 'Sales Management Platform',
-    url: 'sales.stepsbuild.com',
-    color: '#22c55e',
-  },
-  {
-    name: 'ProjectPro',
-    description: 'Project management and collaboration',
-    url: 'projectpro.stepsbuild.com',
-    color: '#3b82f6',
-  },
-  {
-    name: 'TenderPro',
-    description: 'Tender and procurement management',
-    url: 'tender.stepsbuild.com',
-    color: '#8b5cf6',
-  },
-  {
-    name: 'AttendancePro',
-    description: 'Attendance tracking and management',
-    url: 'attendance.stepsbuild.com',
-    color: '#10b981',
-  },
-  {
-    name: 'BookkeepingPro',
-    description: 'Accounting and bookkeeping solution',
-    url: 'bookkeeping.stepsbuild.com',
-    color: '#f59e0b',
-  },
-  {
-    name: 'FederationPro',
-    description: 'Federation Management Platform',
-    url: 'goc.stepsbuild.com',
-    color: '#0891b2',
-  },
+  ["SlimFile", "Compress, convert & collaborate", "slim-file.com"],
+  ["STEPsBuild", "Project management reimagined", "stepsbuild.com"],
+  ["LogbookPro", "Track and document everything", "logbook.stepsbuild.com"],
+  ["HealthPro", "Health Reporting System", "pharmacy.stepsbuild.com"],
+  ["MarketplacePro", "eMart | eMall | eMarket", "mall.beaver-llc.com"],
+  ["LeBoss", "Personal Assistant | Task Management | Information Storage", "leboss.stepsbuild.com"],
+  ["ExpenseVault", "Digitize Receipts | Voucher Automation", "expense.stepsbuild.com"],
+  ["DigitalPro", "Digitize and Store Documents", "cid.stepsbuild.com"],
+  ["ScorePro", "Training and Coaching Management", "score.stepsbuild.com"],
+  ["ThesisPro", "Thesis Management", "thesis.stepsbuild.com"],
+  ["LoanPro", "Loan Application Management", "bankloan.stepsbuild.com"],
+  ["Fire Safety", "Fire certification", "firesafety.stepsbuild.com"],
+  ["VendorPro", "Vendor Management", "petroleum.stepsbuild.com"],
+  ["TrainingPro", "Organizational Training Management", "training.stepsbuild.com"],
+  ["ReportingPro", "Organizational Reporting System", "reporting.stepsbuild.com"],
+  ["SalesPro", "Sales Management Platform", "sales.stepsbuild.com"],
+  ["ProjectPro", "Project management and collaboration", "projectpro.stepsbuild.com"],
+  ["TenderPro", "Tender and procurement management", "tender.stepsbuild.com"],
+  ["AttendancePro", "Attendance tracking and management", "attendance.stepsbuild.com"],
+  ["BookkeepingPro", "Accounting and bookkeeping solution", "bookkeeping.stepsbuild.com"],
+  ["FederationPro", "Federation Management Platform", "goc.stepsbuild.com"]
 ];
 
 export default function Hero() {
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Generate structured data for all products
-  const productsStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Our Products - Beaver Technologies",
-    "description": "Explore 14+ enterprise software products built by Beaver Technologies for companies, institutions, and governments worldwide.",
-    "url": "https://www.beaver-llc.com/products",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.beaver-llc.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Products",
-          "item": "https://www.beaver-llc.com/products"
-        }
-      ]
-    },
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": PRODUCTS.map((product, index) => ({
-        "@type": "SoftwareApplication",
-        "position": index + 1,
-        "name": product.name,
-        "description": product.description,
-        "url": `https://${product.url}`,
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      }))
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 780) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleMobileNavClick = (e) => {
+    if (e.target.closest('a')) {
+      setMobileMenuOpen(false);
     }
   };
 
   return (
     <>
-      <SEO
-        title="Our Products - Enterprise Software Solutions | Beaver Technologies"
-        description="Explore 20+ enterprise software products: STEPsBuild, SlimFile, LogBook, Pharmacy, Mall, LeBoss, and more. Built for companies, institutions, and governments worldwide."
-        keywords="enterprise software products, business software, STEPsBuild, SlimFile, LogBook, project management, document management, pharmacy software, mall platform, expense tracking, thesis management"
-        canonical="https://www.beaver-llc.com/products"
-        ogTitle="Our Products - Beaver Technologies"
-        ogDescription="20+ enterprise software products including STEPsBuild, SlimFile, LogBook, and specialized solutions for various industries."
-        structuredData={productsStructuredData}
-      />
-      <main style={{
-        minHeight: '100vh',
-        padding: '120px 24px 60px',
-      background: 'var(--bg)',
-      transition: 'background 0.3s ease',
-    }}>
-      <div style={{
-        maxWidth: 1200,
-        margin: '0 auto',
-      }}>
-        {/* Header */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: 60,
-        }}>
-          <h1 style={{
-            fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
-            fontWeight: 700,
-            fontSize: 'clamp(40px, 6vw, 72px)',
-            lineHeight: 1.1,
-            letterSpacing: '-2px',
-            color: 'var(--text)',
-            marginBottom: 16,
-          }}>
-            Our Products
-          </h1>
-          <p style={{
-            fontFamily: 'SF Pro Text, -apple-system, system-ui, sans-serif',
-            fontSize: 'clamp(18px, 2vw, 24px)',
-            color: 'var(--text-secondary)',
-            maxWidth: 600,
-            margin: '0 auto',
-            lineHeight: 1.5,
-          }}>
-            Purposeful software built to solve real problems.
-          </p>
-        </div>
-
-        {/* Product Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 20,
-        }}>
-          {PRODUCTS.map((product) => (
-            <button
-              key={product.url}
-              onClick={() => setSelectedProduct(product)}
-              style={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                padding: '32px 24px',
-                background: 'var(--card-bg)',
-                border: '1px solid var(--border)',
-                borderRadius: 16,
-                textAlign: 'left',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = 'var(--card-shadow-hover)';
-                e.currentTarget.style.borderColor = product.color;
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'var(--card-shadow)';
-                e.currentTarget.style.borderColor = 'var(--border)';
-              }}
-            >
-              {/* Color accent */}
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: 12,
-                background: `${product.color}15`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 16,
-              }}>
-                <div style={{
-                  width: 24,
-                  height: 24,
-                  borderRadius: '50%',
-                  background: product.color,
-                }}/>
-              </div>
-
-              {/* Product name */}
-              <h3 style={{
-                fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
-                fontWeight: 600,
-                fontSize: 22,
-                color: 'var(--text)',
-                marginBottom: 8,
-                letterSpacing: '-0.5px',
-              }}>
-                {product.name}
-              </h3>
-
-              {/* Description */}
-              <p style={{
-                fontFamily: 'SF Pro Text, -apple-system, system-ui, sans-serif',
-                fontSize: 15,
-                color: 'var(--text-secondary)',
-                marginBottom: 16,
-                lineHeight: 1.5,
-              }}>
-                {product.description}
-              </p>
-
-              {/* URL */}
-              <div style={{
-                marginTop: 'auto',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-              }}>
-                <span style={{
-                  fontFamily: 'SF Mono, Menlo, Monaco, monospace',
-                  fontSize: 13,
-                  color: product.color,
-                  fontWeight: 500,
-                }}>
-                  {product.url}
-                </span>
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke={product.color}
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Iframe Modal */}
-      {selectedProduct && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            zIndex: 1000,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 20,
-          }}
-          onClick={() => setSelectedProduct(null)}
-        >
-          <div
-            style={{
-              position: 'relative',
-              width: '100%',
-              maxWidth: 1400,
-              height: '90vh',
-              background: 'var(--card-bg)',
-              borderRadius: 16,
-              overflow: 'hidden',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-            }}
-            onClick={(e) => e.stopPropagation()}
+      <header className={`site-head ${mobileMenuOpen ? 'open' : ''}`} id="head">
+        <div className="wrap head-row">
+          <a className="brand" href="#top">
+            <svg viewBox="25 22 50 55" aria-hidden="true">
+              <rect x="25.4" y="23" width="13.6" height="52.8" rx="6.8" fill="currentColor"/>
+              <rect x="46" y="23" width="28.6" height="23" rx="7" fill="currentColor"/>
+              <rect x="46" y="52.7" width="28.6" height="23" rx="7" fill="currentColor"/>
+            </svg>
+            <span>Beaver</span>
+          </a>
+          <nav className="nav">
+            <a href="#products">Products</a>
+            <a href="#serve">Who we serve</a>
+            <a href="#approach">Approach</a>
+            <a className="btn btn--sm btn--navy" href="#contact">Contact us</a>
+          </nav>
+          <button
+            className="burger"
+            aria-label="Menu"
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {/* Header */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '16px 20px',
-                borderBottom: '1px solid var(--border)',
-                background: 'var(--nav-bg)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 8,
-                    background: `${selectedProduct.color}15`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 16,
-                      height: 16,
-                      borderRadius: '50%',
-                      background: selectedProduct.color,
-                    }}
-                  />
-                </div>
-                <div>
-                  <h3
-                    style={{
-                      fontFamily: 'SF Pro Display, -apple-system, system-ui, sans-serif',
-                      fontWeight: 600,
-                      fontSize: 16,
-                      color: 'var(--text)',
-                      margin: 0,
-                    }}
-                  >
-                    {selectedProduct.name}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'SF Mono, monospace',
-                      fontSize: 12,
-                      color: 'var(--text-secondary)',
-                      margin: 0,
-                    }}
-                  >
-                    {selectedProduct.url}
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setSelectedProduct(null)}
-                style={{
-                  background: 'var(--card-bg)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 8,
-                  padding: 8,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--text)',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--border)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'var(--card-bg)';
-                }}
-              >
-                <X size={20} />
-              </button>
-            </div>
+            <span></span><span></span>
+          </button>
+        </div>
+        <nav className="mobile-nav" onClick={handleMobileNavClick}>
+          <a href="#products">Products</a>
+          <a href="#serve">Who we serve</a>
+          <a href="#approach">Approach</a>
+          <a className="btn btn--navy" href="#contact">Contact us</a>
+        </nav>
+      </header>
 
-            {/* Iframe */}
-            <iframe
-              src={`https://${selectedProduct.url}`}
-              style={{
-                width: '100%',
-                height: 'calc(100% - 65px)',
-                border: 'none',
-              }}
-              title={selectedProduct.name}
-            />
+      <main>
+        <section className="hero on-navy" id="top">
+          <div className="hero__glow"></div>
+          <svg className="hero__mark" viewBox="25 22 50 55" aria-hidden="true">
+            <rect x="25.4" y="23" width="13.6" height="52.8" rx="6.8" fill="#fff"/>
+            <rect x="46" y="23" width="28.6" height="23" rx="7" fill="#fff"/>
+            <rect x="46" y="52.7" width="28.6" height="23" rx="7" fill="#fff"/>
+          </svg>
+          <div className="wrap">
+            <p className="eyebrow">Beaver Technologies</p>
+            <h1 className="display">Purposeful software for serious institutions.</h1>
+            <p className="lede">Beaver builds and operates enterprise platforms for companies, institutions and governments worldwide — twenty-one products in market, each designed so no one has to think before they act.</p>
+            <div className="cta-row">
+              <a className="btn btn--light" href="#contact">Request a demo</a>
+              <a className="btn btn--ghost" href="#products">Explore the products</a>
+            </div>
+            <dl className="stats">
+              <div><dt>21</dt><dd>Products in market</dd></div>
+              <div><dt>3</dt><dd>Sectors served</dd></div>
+              <div><dt>Global</dt><dd>Deployment footprint</dd></div>
+              <div><dt>One</dt><dd>Engineering standard</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section className="section" id="products">
+          <div className="wrap">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">The portfolio</p>
+                <h2 className="display">Twenty-one platforms, one standard of craft.</h2>
+              </div>
+              <p>Each product solves one operational problem completely. They share an interface language, a security model and a deployment path — so adopting a second is never a second migration.</p>
+            </div>
+            <div className="products">
+              {PRODUCTS.map(([name, tag, url], i) => (
+                <a key={i} className="card" href={`https://${url}`} target="_blank" rel="noopener noreferrer">
+                  <div className="card__top">
+                    <span className="card__chip">{name[0]}</span>
+                    <span className="card__no">{String(i + 1).padStart(2, '0')}</span>
+                  </div>
+                  <div className="card__name">{name}</div>
+                  <div className="card__tag">{tag}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--tint" id="serve">
+          <div className="wrap">
+            <p className="eyebrow">Who we serve</p>
+            <h2 className="display" style={{maxWidth: '20ch', marginBottom: 'clamp(38px,5vw,64px)'}}>
+              Built for organisations that cannot afford to guess.
+            </h2>
+            <div className="audience">
+              <article>
+                <img src="https://images.unsplash.com/photo-1758518727707-b023e285b709?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Business partners meeting in a modern office" />
+                <div className="body">
+                  <h3>Companies</h3>
+                  <p>Sales, vendor, expense and document operations consolidated onto platforms your teams actually use.</p>
+                  
+                </div>
+              </article>
+              <article>
+                <img src="https://images.unsplash.com/photo-1741699427799-3fbb70fce948?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Student studying in a university library" />
+                <div className="body">
+                  <h3>Institutions</h3>
+                  <p>Training, thesis, health reporting and federation management for universities, hospitals and member bodies.</p>
+                  
+                </div>
+              </article>
+              <article>
+                <img src="https://images.unsplash.com/photo-1773433392027-2dff23126d86?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Neoclassical government building with columns" />
+                <div className="body">
+                  <h3>Governments</h3>
+                  <p>Records, reporting and loan administration built for public accountability and long service lifetimes.</p>
+              
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--navy on-navy" id="approach">
+          <div className="wrap split">
+            <div>
+              <p className="eyebrow">Our approach</p>
+              <h2 className="display">Detail is the product.</h2>
+              <p>We hold every screen to the same rules: equal modal heights, buttons that read as buttons, controls that sit where they sat on the last screen. When the user visits any of our apps, the user shouldn't have to think before taking an action.</p>
+            </div>
+            <ol className="principles">
+              <li>
+                <span className="num">01</span>
+                <div>
+                  <b>One interface language</b>
+                  <p>Every product shares the same patterns, so training one team trains them all.</p>
+                </div>
+              </li>
+              <li>
+                <span className="num">02</span>
+                <div>
+                  <b>Built to be operated</b>
+                  <p>Deployment, migration and support are part of the product, not a separate engagement.</p>
+                </div>
+              </li>
+              <li>
+                <span className="num">03</span>
+                <div>
+                  <b>Records that outlive us</b>
+                  <p>Documents, logs and reports are stored so they remain retrievable and auditable for decades.</p>
+                </div>
+              </li>
+              <li>
+                <span className="num">04</span>
+                <div>
+                  <b>Custom where it counts</b>
+                  <p>Where a standard platform doesn't fit, we build the missing piece rather than bend your process.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section className="section" id="contact">
+          <div className="wrap">
+            <div className="panel">
+              <div>
+                <h2 className="display" style={{fontSize: 'clamp(28px,3.8vw,54px)'}}>
+                  Tell us what you're trying to run.
+                </h2>
+                <p>Send us the process that's slowing you down. We'll tell you which of our platforms fits, or whether you need something built.</p>
+              </div>
+              <div className="contact-list">
+                <a className="primary" href="mailto:admin@beaver-llc.com">
+                  <span>
+                    <small>Email</small>
+                    <strong>admin@beaver-llc.com</strong>
+                  </span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a className="secondary" href="https://www.beaver-llc.com" target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <small>Web</small>
+                    <strong>www.beaver-llc.com</strong>
+                  </span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-foot">
+        <div className="wrap">
+          <div className="foot-grid">
+            <div className="foot-about">
+              <div className="brand" style={{color: '#fff'}}>
+                <svg viewBox="25 22 50 55" aria-hidden="true" style={{width: '26px'}}>
+                  <rect x="25.4" y="23" width="13.6" height="52.8" rx="6.8" fill="currentColor"/>
+                  <rect x="46" y="23" width="28.6" height="23" rx="7" fill="currentColor"/>
+                  <rect x="46" y="52.7" width="28.6" height="23" rx="7" fill="currentColor"/>
+                </svg>
+                <span>Beaver</span>
+              </div>
+              <p>Beaver Technologies builds purposeful enterprise software for companies, institutions and governments worldwide.</p>
+            </div>
+            <div>
+              <h4>Platforms</h4>
+              <div className="foot-products">
+                {PRODUCTS.map(([name, , url], i) => (
+                  <a key={i} href={`https://${url}`} target="_blank" rel="noopener noreferrer">{name}</a>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <div className="foot-links">
+                <a href="#serve">Who we serve</a>
+                <a href="#approach">Approach</a>
+                <a href="mailto:admin@beaver-llc.com">admin@beaver-llc.com</a>
+              </div>
+            </div>
+          </div>
+          <div className="foot-bottom">
+            <span>© 2026 Beaver Technologies LLC. All rights reserved.</span>
+            <span>Companies · Institutions · Governments</span>
           </div>
         </div>
-      )}
-    </main>
+      </footer>
     </>
   );
 }

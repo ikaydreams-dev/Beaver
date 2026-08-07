@@ -1,66 +1,6 @@
+/* Minimal reset - all styling is in Hero.css */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-/* Dark mode (default) */
-:root[data-theme="dark"] {
-  --bg: #0a1929;
-  --nav-bg: rgba(10, 25, 41, 0.95);
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.1);
-  --text: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --accent: #1e3a8a;
-  --navy: #1e3a8a;
-  --navy-light: #3b82f6;
-  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Light mode */
-:root[data-theme="light"] {
-  --bg: #ffffff;
-  --nav-bg: rgba(255, 255, 255, 0.95);
-  --card-bg: #f8fafc;
-  --border: rgba(30, 58, 138, 0.1);
-  --text: #1e3a8a;
-  --text-secondary: rgba(30, 58, 138, 0.7);
-  --accent: #1e3a8a;
-  --navy: #1e3a8a;
-  --navy-light: #3b82f6;
-  --card-shadow: 0 2px 8px rgba(30, 58, 138, 0.04);
-  --card-shadow-hover: 0 8px 24px rgba(30, 58, 138, 0.12);
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Headings use SF Pro Display */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Code/monospace uses SF Mono */
-code, pre {
-  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
-  }
 }
