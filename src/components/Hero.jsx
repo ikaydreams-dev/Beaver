@@ -17,7 +17,7 @@ const PRODUCTS = [
   ["VendorPro", "Vendor Management", "petroleum.stepsbuild.com"],
   ["TrainingPro", "Organizational Training Management", "training.stepsbuild.com"],
   ["ReportingPro", "Organizational Reporting System", "reporting.stepsbuild.com"],
-  ["SalesPro", "Sales Management Platform", "sales.stepsbuild.com"],
+  ["SalesPro", "Sales Management Platform", "pharmanova.stepsbuild.com"],
   ["ProjectPro", "Project management and collaboration", "project.stepsbuild.com"],
   ["TenderPro", "Tender and procurement management", "tender.stepsbuild.com"],
   ["AttendancePro", "Attendance tracking and management", "attendance.stepsbuild.com"],
