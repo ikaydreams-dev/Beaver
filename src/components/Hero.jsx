@@ -90,7 +90,7 @@ export default function Hero() {
           <div className="wrap">
             <p className="eyebrow">Beaver Technologies</p>
             <h1 className="display">Purposeful software for serious institutions.</h1>
-            <p className="lede">Beaver builds and operates enterprise platforms for companies, institutions and governments worldwide — twenty-one products in market, each designed so no one has to think before they act.</p>
+            <p className="lede">Beaver builds and operates enterprise platforms for companies, institutions and governments worldwide — twenty products in market, each designed so no one has to think before they act.</p>
             <div className="cta-row">
               <a className="btn btn--light" href="#contact">Request a demo</a>
               <a className="btn btn--ghost" href="#products">Explore the products</a>
@@ -109,7 +109,7 @@ export default function Hero() {
             <div className="section-head">
               <div>
                 <p className="eyebrow">The portfolio</p>
-                <h2 className="display">Twenty-one platforms, one standard of craft.</h2>
+                <h2 className="display">Twenty platforms, one standard of craft.</h2>
               </div>
               <p>Each product solves one operational problem completely. They share an interface language, a security model and a deployment path — so adopting a second is never a second migration.</p>
             </div>
