@@ -96,7 +96,7 @@ export default function Hero() {
               <a className="btn btn--ghost" href="#products">Explore the products</a>
             </div>
             <dl className="stats">
-              <div><dt>21</dt><dd>Products in market</dd></div>
+              <div><dt>20</dt><dd>Products in market</dd></div>
               <div><dt>3</dt><dd>Sectors served</dd></div>
               <div><dt>Global</dt><dd>Deployment footprint</dd></div>
               <div><dt>One</dt><dd>Engineering standard</dd></div>
