@@ -6,7 +6,7 @@ export default function Landing({ onNavigate }) {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Beaver Technologies - Enterprise Software Solutions",
-    "description": "Beaver Technologies builds purposeful software for companies, institutions, and governments. 14+ enterprise products serving organizations globally.",
+    "description": "Beaver Technologies builds purposeful software for companies, institutions, and governments. 20+ enterprise products serving organizations globally.",
     "url": "https://www.beaver-llc.com",
     "mainEntity": {
       "@type": "Organization",
@@ -30,11 +30,11 @@ export default function Landing({ onNavigate }) {
     <>
       <SEO
         title="Beaver Technologies | Beaver - Enterprise Software Solutions for Companies, Institutions & Governments"
-        description="Beaver Technologies (Beaver) builds purposeful enterprise software for companies, institutions, and governments worldwide. 14+ products including STEPsBuild, SlimFile, LogBook, Reporting, Pharmanova. Contact: admin@beaver-llc.com"
+        description="Beaver Technologies (Beaver) builds purposeful enterprise software for companies, institutions, and governments worldwide. 20+ products including STEPsBuild, SlimFile, LogBook, Reporting, Pharmanova. Contact: admin@beaver-llc.com"
         keywords="Beaver, Beaver Technologies, Beaver LLC, enterprise software, business software solutions, STEPsBuild, SlimFile, project management software, document management, SaaS solutions, custom software development"
         canonical="https://www.beaver-llc.com"
         ogTitle="Beaver Technologies | Beaver - Enterprise Software Solutions"
-        ogDescription="Beaver Technologies (Beaver) builds purposeful enterprise software for companies, institutions, and governments. 14+ products serving organizations globally."
+        ogDescription="Beaver Technologies (Beaver) builds purposeful enterprise software for companies, institutions, and governments. 20+ products serving organizations globally."
         structuredData={structuredData}
       />
       <main style={{
@@ -161,7 +161,7 @@ export default function Landing({ onNavigate }) {
                 color: 'var(--text)',
                 marginBottom: 8,
               }}>
-                14+
+                20+
               </div>
               <div style={{
                 fontSize: 16,
